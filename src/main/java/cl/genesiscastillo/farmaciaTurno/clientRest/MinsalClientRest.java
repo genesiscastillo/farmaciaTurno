@@ -30,9 +30,11 @@ public class MinsalClientRest {
 	@Autowired
 	FarmaciaTurnoProperties properties;
 
-	public List<LocalPorRegionVO> obtenerLocalesPorRegiones(Integer id_region) {
+	public List<LocalPorRegionVO> obtenerLocalesPorRegion() {
 		List<LocalPorRegionVO> localPorRegionVOs = new ArrayList<LocalPorRegionVO>();
+		
 		try {
+			Integer id_region = Integer.parseInt( properties.getRegionPorDefecto());
 			String uri = properties.getLocalesPorRegiones();
 
 			URI targetUrl = UriComponentsBuilder.fromUriString(uri).queryParam("id_region", id_region).build().encode()
@@ -48,12 +50,12 @@ public class MinsalClientRest {
 
 	public String obtenerComunasPorRegion() {
 		String uri = properties.getComunasPorRegiones();
-
+		Integer reg_id = Integer.parseInt( properties.getRegionPorDefecto());
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 
 		MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-		body.add("reg_id", 7);
+		body.add("reg_id", reg_id);
 
 		HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
 		String result = restTemplate.postForObject(uri, requestEntity, String.class);

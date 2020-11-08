@@ -32,7 +32,7 @@ class FarmaciaTurnoApplicationTests extends AbstractTest {
 	
 	@Test
 	public void testClienteRestLocalPorRegion() throws Exception {
-		List<LocalPorRegionVO> localPorRegionVOs =  minsalClientRest.obtenerLocalesPorRegiones(7);
+		List<LocalPorRegionVO> localPorRegionVOs =  minsalClientRest.obtenerLocalesPorRegion();
 		localPorRegionVOs.forEach(System.out::println);
 		
 		assertTrue(localPorRegionVOs.size() > 0);
@@ -42,7 +42,7 @@ class FarmaciaTurnoApplicationTests extends AbstractTest {
 	public void test1() throws Exception	{
 		FarmaciaTurnoRequestVO farmaciaTurnoRequestVO = new FarmaciaTurnoRequestVO();
 		farmaciaTurnoRequestVO.setComuna("BUIN");
-		farmaciaTurnoRequestVO.setLocal("PLAZA");
+		farmaciaTurnoRequestVO.setLocal("AHUMADA");
 		
 		final String uri = "/getListaFarmaciaEnTurno";
 		

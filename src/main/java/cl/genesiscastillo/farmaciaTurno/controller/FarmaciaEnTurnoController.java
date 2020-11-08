@@ -32,7 +32,7 @@ public class FarmaciaEnTurnoController {
 	public ResponseEntity<List<FarmaciaTurnoResponseVO>> getListaFarmaciaEnTurno(
 			@RequestBody FarmaciaTurnoRequestVO farmaciaTurnoRequestVO) {
 
-		List<LocalPorRegionVO> localPorRegionVOs = minsalClientRest.obtenerLocalesPorRegiones(7);
+		List<LocalPorRegionVO> localPorRegionVOs = minsalClientRest.obtenerLocalesPorRegion();
 
 		List<FarmaciaTurnoResponseVO> farmaciaTurnoResponseVOs = localPorRegionVOs.stream()
 				.filter(obj -> obj.getComunaNombre().equals( farmaciaTurnoRequestVO.getComuna() ))

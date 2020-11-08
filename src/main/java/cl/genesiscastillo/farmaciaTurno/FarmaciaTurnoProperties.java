@@ -13,5 +13,6 @@ public class FarmaciaTurnoProperties {
 	
 	private String comunasPorRegiones;
 	private String localesPorRegiones;
+	private String regionPorDefecto;
 	
 }
